@@ -1,0 +1,27 @@
+<div class="container-fluid user-info-container" id="user_info_container" *ngIf="!user_form && !address_form">
+
+	<!-- Button for open Search tab -->
+	<div class="search-btn-container">
+		<div class="search-btn-absolute">
+			<button type="button" class='close-icon border-0' (click)="visibleSearchForm(false)" [ngClass]="{'hidden_btn': !show_search_form }" tabindex="-1">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<button type="button" class='search-icon border-0' (click)="visibleSearchForm(true)" [ngClass]="{'hidden_btn': show_search_form }" tabindex="-1">
+					<app-search-icon></app-search-icon>
+			</button>
+		</div>
+	</div>
+
+
+	<app-search-form class="row" [ngClass]="{'show': show_search_form }"></app-search-form>
+	<app-user-list class="row p-3" [users]="users"></app-user-list>
+	<app-address-list class="row address-container" [addresses]="focus_user_address" [user_id]="focus_user" [ngClass]="{'empty': !(focus_user_address && focus_user_address.length)}"></app-address-list>
+
+
+
+</div>
+
+
+<!-- Forms for update (from create-user module) -->
+<app-address-subpage [mode]="form_mode" [update_address]="address_data" *ngIf="address_form" class="container-fluid"></app-address-subpage>
+<app-user-subpage [mode]="form_mode" [update_user]="user_data" *ngIf="user_form" class="container-fluid"></app-user-subpage>

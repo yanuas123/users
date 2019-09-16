@@ -1,0 +1,5 @@
+<app-user-subpage class="container-fluid" *ngIf="active_subpage == 'user'" [mode]="mode" (onNext)="onNext($event)"></app-user-subpage>
+
+<app-address-subpage class="container-fluid" *ngIf="active_subpage == 'address'"  [mode]="mode" (onNext)="onNext($event)"></app-address-subpage>
+
+<app-summary-subpage class="container-fluid" *ngIf="active_subpage == 'summary'"  [mode]="mode" (onNext)="onNext($event)"></app-summary-subpage>

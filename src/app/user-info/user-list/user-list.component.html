@@ -1,0 +1,25 @@
+<table class="table table-sm">
+	<thead>
+		<tr>
+			<th scope="col">First Name</th>
+			<th scope="col">Last Name</th>
+			<th scope="col">User Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			<th scope="col">action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let user of users; index as i" (click)="focusOnItem($event, user._id, i)" [ngClass]="{ 'focus': focus_item == user._id }" id="us{{user._id}}">
+			<td>{{user.firstname}}</td>
+			<td>{{user.lastname}}</td>
+			<td>{{user.username}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.phone}}</td>
+			<td>
+				<button type="button" class="btn btn-primary mr-2 mt-1 btn-sm" (click)="updateItem(user)">Update</button>
+				<button type="button" class="btn btn-danger mt-1 btn-sm"  (click)="deleteItem(user._id)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

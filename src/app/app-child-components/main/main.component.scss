@@ -1,0 +1,13 @@
+.sidebar-container {
+	background-color: #adbdc0;
+	box-shadow: inset -10px 0px 15px 0px rgba(0,0,0,0.15);
+}
+.menu-container {
+	position: -webkit-sticky; 
+	position: sticky;
+	top: 16px;
+}
+
+.main__container-height {
+	min-height: 100%;
+}

@@ -1,0 +1,9 @@
+<nav>
+	<ul class="nav flex-column" [ngClass]="{'nav-fill nav-pills': menu_type == 'button' ? true : false}">
+		<li class="nav-item" *ngFor="let item of items; index as i">
+
+		<a [routerLink]="item.path" class="nav-link text-white" routerLinkActive='active-li' [routerLinkActiveOptions]="{ exact: true }" tabindex="{{tabindex ? i+1 : '-1'}}">{{item.title}}</a>
+
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* POP-UP ========================================================= */
+
+body.noscroll {
+	overflow: hidden;
+}
+.popup-wrap {
+	display: none;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.4s ease;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	.back-wall {
+		display: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1001;
+		opacity: 0.4;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+	}
+	.popups-block_wrap {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1002;
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		.popups-frame_wrap {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100%;
+		}
+		.popups-frame {
+			margin: 6px;
+			padding: 0.88rem;
+			max-width: calc(100% - 12px);
+			min-width: 200px;
+			min-height: 100px;
+			background-color: #fff;
+			border-radius: 0.38rem;
+
+			.close-button-row {
+				display: flex;
+				justify-content: flex-end;
+				margin-top: -10px;
+
+				.close-btn {
+					padding: 4px;
+				}
+			}
+			.popups-window {
+				max-width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	}
+	&.display-popup {
+		display: block !important;
+	}
+	&.animate-popup {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity 0.4s ease;
+	}
+}
+.popup-window {
+	display: none;
+	max-width: 100%;
+
+	&.popup-retreat {
+		padding: 0 7% 6px;
+		@media screen and (max-width: 479px) {
+			padding: 0 1% 6px;
+		}
+	}
+	.h4, .h5, .h6 {
+		width: auto;
+		padding: 20px 0;
+	}
+	&.display-popup {
+		display: block;
+	}
+	.popup-description {
+	}
+	.checkbox+.label, .radio+.label {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.label {
+		@media screen and (max-width: 768px) {
+			padding-bottom: 6px;
+		}
+	}
+}
+/* end POP-UP ===================================================== */

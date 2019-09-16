@@ -1,0 +1,50 @@
+<div class="row mb-4 mt-3">
+	<div class="col">
+		<h3>Create User</h3>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="row my-2">
+			<div class="col">
+				<b class="mr-2">User Name:</b> <span>{{user.username}}</span>
+			</div>
+		</div>
+		<div class="row my-2">
+			<div class="col-sm-6">
+				<b class="mr-2">First Name:</b> <span>{{user.firstname}}</span>
+			</div>
+			<div class="col-sm-6">
+				<b class="mr-2">Last Name:</b> <span>{{user.lastname}}</span>
+			</div>
+		</div>
+		<div class="row my-2">
+			<div class="col-sm-6">
+				<b class="mr-2">Email:</b> <span>{{user.email}}</span>
+			</div>
+			<div class="col-sm-6">
+				<b class="mr-2">Phone:</b> <span>{{user.phone}}</span>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<div class="h5">List of Address Types</div>
+				<ul class='address-list'>
+					<li *ngFor="let address of user.address">{{address.type}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mb-3 mt-5">
+	<div class="col-6 text-left">
+		<button type="button" class="btn btn-info" (click)="prev()">Previous</button>
+	</div>
+	<div class="col-6 text-right">
+		<button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="save()">Save</button>
+	</div>
+</div>

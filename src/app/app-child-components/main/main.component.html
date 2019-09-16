@@ -1,0 +1,12 @@
+<div class="container-fluid">
+	<div class="row main__container-height">
+		<div class="sidebar-container col-md-3 py-3 text-white">
+			<div class="row justify-content-center menu-container">
+				<app-menu menu_type="button" [tabindex]="true"></app-menu>
+			</div>
+		</div>
+		<div class="main-content col-md-9 p-0 bg-light">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

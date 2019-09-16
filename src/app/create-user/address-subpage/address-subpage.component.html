@@ -1,0 +1,101 @@
+<div class="row mt-3">
+	<div class="col">
+		<h3 *ngIf="mode == 'create_user'">Create User</h3>
+		<div class="h3" *ngIf="mode == 'create_address'">Add New Address</div>
+		<div class="h3" *ngIf="mode == 'update_address'">Update Address</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<form name='address-form' autocomplete="off" class="col" #addressForm="ngForm">
+		<div class="row" *ngIf="mode == 'create_user'">
+			<div class="col h5 mb-3">Address information</div>
+		</div>
+
+		<!-- List of address -->
+		<div class="row mt-3 mb-3">
+			<div class="col-sm-6 offset-sm-6">
+				<div class="h6" *ngIf="address.length">List of Address Types</div>
+				<ul class='address-list'>
+					<li class="mt-2" *ngFor="let address_item of address; index as i">
+						<div class="row">
+							<div class="col-sm-6">{{address_item.type}}</div>
+							<div class="col-sm-6 text-right">
+								<button type="button" class="btn btn-danger btn-sm" (click)="delete(i)">Delete</button>
+							</div>
+						</div>
+				</li>
+			</ul>
+			</div>
+		</div>
+
+
+		<div class='row'>
+			<div class="col-12">
+				<div class="form-group row">
+					 <div class="col-md-6">
+						 <label for="address_type">Address type*</label>
+						 <select class="form-control" id="address_type" name="type" required #type="ngModel" [(ngModel)]="active_address.type">
+								 <option>Billing Address</option>
+							<option>Shipment Address </option>
+							<option>Home Address</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col">
+						<input name="address" type="text" class="form-control" placeholder="Address" [(ngModel)]="active_address.address">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<label for="city_input">City*</label>
+						<select class="form-control" name="city" id="city_input" required #city="ngModel" [(ngModel)]="active_address.city" *ngIf="cities">
+								<option *ngFor="let city of cities">{{city}}</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<label for="country_input">Country*</label>
+						<select class="form-control" name="country" id="country_input" required #country="ngModel" [(ngModel)]="active_address.country" *ngIf="countries" (change)="changeCountry()">
+								<option *ngFor="let country of countries">{{country}}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-md-6">
+						<input name="postcode" type="text" class="form-control" placeholder="Postal Code" [(ngModel)]="active_address.postcode">
+					</div>
+				</div>
+
+				<div class="form-group row" *ngIf="mode == 'create_user' && address.length">
+					 <div class="col-12 text-right">
+						<button type="button" class="btn btn-danger btn-sm" (click)="delete('active_address')">Delete</button>
+					</div>
+			</div>
+
+		</div>
+	</div>
+		<div class="form-group row mt-4" *ngIf="mode == 'create_user'">
+			<div class="col-12 text-right">
+				 <button type="button" class="btn btn-info btn-sm" (click)="add()" [disabled]="addressForm.invalid">Add another address</button>
+			 </div>
+		</div>
+
+		<!-- Bottom buttons block -->
+		<div class="form-group row mt-4">
+			<div class="col-6 text-left">
+				<button type="button" class="btn btn-info" *ngIf="mode == 'create_user'" (click)="prev()">Previous</button>
+				<button type="button" class="btn btn-info" *ngIf="mode == 'create_user'" (click)="next()" [disabled]="addressForm.invalid">Next</button>
+			</div>
+			<div class="col-6 text-right">
+				<button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+				<button type="button" class="btn btn-primary" *ngIf="mode == 'create_address' || mode == 'update_address'" (click)="save()" [disabled]="addressForm.invalid">Save</button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,12 @@
+.hidden {
+	display: none;
+}
+
+.search-form {
+	padding: 6px 16px 0;
+	width: 100%;
+	
+	button:not(:last-child) {
+		margin-right: 1rem;
+	}
+}

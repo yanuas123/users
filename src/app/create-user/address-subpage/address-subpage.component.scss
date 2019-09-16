@@ -1,0 +1,11 @@
+.hidden {
+	display: none;
+}
+
+.address-list {
+	list-style-type: decimal;
+}
+
+button:not(:last-child) {
+	margin-right: 1rem;
+}

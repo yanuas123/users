@@ -1,0 +1,100 @@
+<div class="row mt-3">
+	<div class="col">
+		<h3 *ngIf="mode == 'create_user'">Create User</h3>
+		<div class="h3" *ngIf="mode == 'update_user'">Update User</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<form name='user-form' autocomplete="off" class="col" #userForm="ngForm">
+		<div class="row" *ngIf="mode == 'create_user'">
+			<div class="col h5 mb-3">Main infofrmation</div>
+		</div>
+
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='firstname' type="text" class="form-control" placeholder="First name*" required #firstname="ngModel" [(ngModel)]="user.firstname">
+					   <div [ngClass]="{'hidden': firstname.pristine || firstname.value}" class="alert alert-danger">
+					   This field is required!
+			</div>
+		</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='lastname' type="text" class="form-control" placeholder="Last Name*" required #lastname="ngModel" [(ngModel)]="user.lastname">
+					   <div [ngClass]="{'hidden': lastname.pristine || lastname.value}" class="alert alert-danger">
+					   This field is required!
+			</div>
+		</div>
+	</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='username' type="text" class="form-control" placeholder="User Name*" required #username="ngModel" [(ngModel)]="user.username">
+					   <div [ngClass]="{'hidden': username.pristine || username.value}" class="alert alert-danger">
+					   This field is required!
+			</div>
+		</div>
+	</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='email' type="email" class="form-control" placeholder="Email*" required email #email="ngModel" [(ngModel)]="user.email">
+					   <div [ngClass]="{'hidden': email.pristine || email.value}" class="alert alert-danger">
+					   This field is required!
+			</div>
+			<div [ngClass]="{'hidden': email.valid || email.pristine || !email.value}" class="alert alert-danger">
+				Invalid email address!
+		</div>
+	</div>
+	</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='phone' type="tel" class="form-control" placeholder="Phone*" required pattern="^[0-9\+\-\(\)\s]{8,20}$" #phone="ngModel" [(ngModel)]="user.phone">
+				<div [ngClass]="{'hidden': phone.pristine || phone.value}" class="alert alert-danger">
+					This field is required!
+			</div>
+			<div [ngClass]="{'hidden': phone.valid || phone.pristine || !phone.value}" class="alert alert-danger">
+				Invalid phone number!
+		</div>
+	</div>
+	</div>
+
+		<div class="form-group row">
+			<div class="col">
+				<input name='password' type="password" class="form-control" placeholder="Password*" required pattern="^[a-zA-Z0-9]{6,}$" #password="ngModel" [(ngModel)]="user.password">
+				<div [ngClass]="{'hidden': password.pristine || password.value}" class="alert alert-danger">
+					This field is required!
+			</div>
+			<div [ngClass]="{'hidden': password.valid || password.pristine || !password.value}" class="alert alert-danger">
+				This field must contain at least six digits or letters of the Latin alphabet!
+		</div>
+	</div>
+	<div class="col">
+		<input name='password_check' type="password" class="form-control" placeholder="Password check*" required #passwordcheck="ngModel" [(ngModel)]="password_check">
+			   <div [ngClass]="{'hidden': passwordcheck.pristine || passwordcheck.value}" class="alert alert-danger">
+			   This field is required!
+	</div>
+	<div [ngClass]="{'hidden': passwordcheck.value == password.value || passwordcheck.pristine || !passwordcheck.value}" class="alert alert-danger">
+		This field must be the same as the previous!
+</div>
+</div>
+</div>
+
+
+<!-- Bottom buttons block -->
+<div class="form-group row mt-5">
+	<div class="col-6 text-left">
+		<button type="button" class="btn btn-info" *ngIf="mode == 'create_user'" [disabled]="userForm.invalid || passwordcheck.value != password.value" (click)="next()">Next</button>
+	</div>
+	<div class="col-6 text-right">
+		<button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+		<button type="button" class="btn btn-primary" *ngIf="mode == 'update_user'" [disabled]="userForm.invalid || (passwordcheck.value !== password.value)" (click)="save()">Save</button>
+	</div>
+</div>
+</form>
+</div>

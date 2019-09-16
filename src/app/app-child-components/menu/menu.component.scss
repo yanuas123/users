@@ -1,0 +1,17 @@
+li {
+	&:hover {
+		a {
+			opacity: 0.7;
+		}
+	}
+}
+
+.nav-pills {
+	a {
+		border: 1px solid transparent;
+
+		&.active-li {
+			border: 1px solid #fff;
+		}
+	}
+}
